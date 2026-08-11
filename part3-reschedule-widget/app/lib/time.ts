@@ -49,12 +49,11 @@ export function toUtcIso(localDate: string, localTime: string): string {
  * Returns `true` when the given UTC ISO string is in the past.
  */
 export function isPastTime(utcIso: string): boolean {
-  const selectedTime = new Date(utcIso).getTime();
-  return selectedTime <= Date.now();
+    return new Date(utcIso).getTime() <= Date.now();
 }
 
 /**
- * Returns `true` when the given UTC ISO string is within 2 hours from now.
+ * Returns true when the selected time is less than 2 hours from now.
  *
  * WHY THE 2-HOUR RULE?
  * --------------------

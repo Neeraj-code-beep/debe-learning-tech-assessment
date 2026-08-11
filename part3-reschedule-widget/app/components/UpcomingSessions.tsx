@@ -13,21 +13,30 @@ export default function UpcomingSessions() {
 
   return (
     <>
-      <section
-        aria-labelledby="upcoming-sessions-heading"
-        className="grid gap-5 md:grid-cols-3"
-      >
-        <h2 id="upcoming-sessions-heading" className="sr-only">
-          Upcoming tutoring sessions
-        </h2>
+      <section aria-labelledby="upcoming-sessions-heading">
+        {/* Section header */}
+        <div className="mb-4 flex items-baseline justify-between border-b border-border pb-3">
+          <h2
+            id="upcoming-sessions-heading"
+            className="text-xs font-semibold uppercase tracking-wider text-text-secondary"
+          >
+            Upcoming Sessions
+          </h2>
+          <span className="text-xs text-text-tertiary">
+            {upcomingList.length} scheduled
+          </span>
+        </div>
 
-        {upcomingList.map((session: Session) => (
-          <SessionCard
-            key={session.id}
-            session={session}
-            onRequestReschedule={setSelectedSession}
-          />
-        ))}
+        {/* Appointment list */}
+        <div className="divide-y divide-border rounded-lg border border-border bg-surface">
+          {upcomingList.map((session: Session) => (
+            <SessionCard
+              key={session.id}
+              session={session}
+              onRequestReschedule={setSelectedSession}
+            />
+          ))}
+        </div>
       </section>
 
       {selectedSession && (
