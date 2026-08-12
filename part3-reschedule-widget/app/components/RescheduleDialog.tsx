@@ -92,6 +92,15 @@ export default function RescheduleDialog({
     setLoading(true);
 
     try {
+
+      console.log("=== RESCHEDULE TIME DEBUG ===");
+      console.log("Local date:", date);
+      console.log("Local time:", time);
+      console.log("Converted UTC:", selectedUtc);
+      console.log("Current session UTC:", session.datetime);
+      console.log("============================");
+
+
       const result: RescheduleResponse = await requestReschedule({
         sessionId: session.id,
         existingSlot: session.datetime,

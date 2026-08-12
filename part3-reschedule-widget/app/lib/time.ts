@@ -21,13 +21,13 @@
 export function formatLocalDateTime(utcIso: string): string {
   const date = new Date(utcIso);
   return new Intl.DateTimeFormat(undefined, {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    timeZoneName: "short",
+    weekday: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    timeZoneName: 'short',
   }).format(date);
 }
 
@@ -40,8 +40,9 @@ export function formatLocalDateTime(utcIso: string): string {
  * resulting `.toISOString()` is the correct UTC equivalent.
  */
 export function toUtcIso(localDate: string, localTime: string): string {
-  const [year, month, day] = localDate.split("-").map(Number);
-  const [hours, minutes] = localTime.split(":").map(Number);
+  const [year, month, day] = localDate.split('-').map(Number);
+  const [hours, minutes] = localTime.split(':').map(Number);
+
   return new Date(year, month - 1, day, hours, minutes).toISOString();
 }
 
@@ -49,7 +50,7 @@ export function toUtcIso(localDate: string, localTime: string): string {
  * Returns `true` when the given UTC ISO string is in the past.
  */
 export function isPastTime(utcIso: string): boolean {
-    return new Date(utcIso).getTime() <= Date.now();
+  return new Date(utcIso).getTime() <= Date.now();
 }
 
 /**
@@ -77,7 +78,7 @@ export function isWithinTwoHourWindow(utcIso: string): boolean {
 export function todayLocalDate(): string {
   const d = new Date();
   const yyyy = d.getFullYear();
-  const mm = String(d.getMonth() + 1).padStart(2, "0");
-  const dd = String(d.getDate()).padStart(2, "0");
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
   return `${yyyy}-${mm}-${dd}`;
 }
